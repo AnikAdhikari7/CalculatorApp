@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".MainActivity">
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_dark"
+        android:gravity="bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent">
+
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/acTV"
+                style="@style/Number"
+                android:text="AC"
+                android:textColor="@color/saffron" />
+
+            <ImageView
+                android:id="@+id/backspaceIV"
+                style="@style/Number"
+                android:scaleType="center"
+                android:src="@drawable/backspace_icon" />
+
+            <TextView
+                android:id="@+id/moduloTV"
+                style="@style/Number"
+                android:text="%" />
+
+            <TextView
+                android:id="@+id/divideTV"
+                style="@style/Number"
+                android:text="/" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/sevenTV"
+                style="@style/Number"
+                android:text="7" />
+
+            <TextView
+                android:id="@+id/eightTV"
+                style="@style/Number"
+                android:text="8" />
+
+            <TextView
+                android:id="@+id/nineTV"
+                style="@style/Number"
+                android:text="9" />
+
+            <TextView
+                android:id="@+id/multiplyTV"
+                style="@style/Number"
+                android:text="*" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/fourTV"
+                style="@style/Number"
+                android:text="4" />
+
+            <TextView
+                android:id="@+id/fiveTV"
+                style="@style/Number"
+                android:text="5" />
+
+            <TextView
+                android:id="@+id/sixTV"
+                style="@style/Number"
+                android:text="6" />
+
+            <TextView
+                android:id="@+id/minusTV"
+                style="@style/Number"
+                android:text="-" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/oneTV"
+                style="@style/Number"
+                android:text="1" />
+
+            <TextView
+                android:id="@+id/twoTV"
+                style="@style/Number"
+                android:text="2" />
+
+            <TextView
+                android:id="@+id/threeTV"
+                style="@style/Number"
+                android:text="3" />
+
+            <TextView
+                android:id="@+id/plusTV"
+                style="@style/Number"
+                android:text="+" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/decimalTV"
+                style="@style/Number"
+                android:text="." />
+
+            <TextView
+                android:id="@+id/zeroTV"
+                style="@style/Number"
+                android:text="0" />
+
+            <TextView
+                android:id="@+id/changeSignTV"
+                style="@style/Number"
+                android:text="+/-" />
+
+            <TextView
+                android:id="@+id/equalsTV"
+                style="@style/Number"
+                android:background="@drawable/round_textview"
+                android:text="="
+                android:textStyle="bold" />
+
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/expressionTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="175dp"
+        app:layout_constraintHorizontal_bias="0.9"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/resultTV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0"/>
+
+    <TextView
+        android:id="@+id/resultTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tableLayout"
+        app:layout_constraintHorizontal_bias="0.9"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:textColor="@color/saffron"/>
+
+
+    <TextView
+        android:id="@+id/githubLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="@string/github_link"
+        android:textSize="10sp"
+        android:textStyle="italic"
+        android:textColor="#808080"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
