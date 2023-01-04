@@ -22,7 +22,7 @@
     <style name="Number">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">80dp</item>
-        <item name="android:textSize">30sp</item>
+        <item name="android:textSize">32sp</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:layout_weight">1</item>
         <item name="android:gravity">center</item>

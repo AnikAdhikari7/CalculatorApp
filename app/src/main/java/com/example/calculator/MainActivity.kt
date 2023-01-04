@@ -109,19 +109,52 @@ class MainActivity : AppCompatActivity() {
         }
 
         modulo.setOnClickListener {
-            appendText("%", false)
+            var value = expression.text
+            if (value.isNotEmpty()) {
+                var lastChar = value.substring(value.length - 1)
+                if (lastChar != "%") {
+                    appendText("%", false)
+                }
+            }
         }
         divide.setOnClickListener {
-            appendText("/", false)
+            var value = expression.text
+            if (value.isNotEmpty()) {
+                var lastChar = value.substring(value.length - 1)
+                if (lastChar != "/") {
+                    appendText("/", false)
+                }
+            }
         }
         multiply.setOnClickListener {
-            appendText("*", false)
+            var value = expression.text
+            if (value.isNotEmpty()) {
+                var lastChar = value.substring(value.length - 1)
+                if (lastChar != "*") {
+                    appendText("*", false)
+                }
+            }
         }
         minus.setOnClickListener {
-            appendText("-", false)
+            var value = expression.text
+            if (value.isEmpty()) {
+                appendText("-", false)
+            }
+            if (value.isNotEmpty()) {
+                var lastChar = value.substring(value.length - 1)
+                if (lastChar != "-") {
+                    appendText("-", false)
+                }
+            }
         }
         plus.setOnClickListener {
-            appendText("+", false)
+            var value = expression.text
+            if (value.isNotEmpty()) {
+                var lastChar = value.substring(value.length - 1)
+                if (lastChar != "+") {
+                    appendText("+", false)
+                }
+            }
         }
 
         ac.setOnClickListener {
@@ -139,7 +172,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         decimal.setOnClickListener {
-            appendText(".", true)
+            var value = expression.text
+            if (value.isNotEmpty()) {
+                var lastChar = value.substring(value.length - 1)
+                if (lastChar != ".") {
+                    appendText(".", true)
+                }
+            }
         }
         changeSign.setOnClickListener {
             result.text = ""

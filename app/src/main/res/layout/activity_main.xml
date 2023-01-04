@@ -148,14 +148,13 @@
         android:id="@+id/expressionTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="175dp"
+        android:layout_marginBottom="32dp"
         app:layout_constraintHorizontal_bias="0.9"
         android:textColor="@color/white"
-        android:textSize="25sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/resultTV"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0"/>
 
     <TextView
@@ -176,7 +175,7 @@
         android:id="@+id/githubLink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:gravity="center"
         android:text="@string/github_link"
         android:textSize="10sp"
