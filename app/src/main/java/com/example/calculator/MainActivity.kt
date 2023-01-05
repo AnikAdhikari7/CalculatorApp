@@ -112,7 +112,7 @@ class MainActivity : AppCompatActivity() {
             var value = expression.text
             if (value.isNotEmpty()) {
                 var lastChar = value.substring(value.length - 1)
-                if (lastChar != "%") {
+                if (lastChar != "%" && lastChar != "-" && lastChar != "*" && lastChar != "/" && lastChar != "+") {
                     appendText("%", false)
                 }
             }
@@ -121,7 +121,7 @@ class MainActivity : AppCompatActivity() {
             var value = expression.text
             if (value.isNotEmpty()) {
                 var lastChar = value.substring(value.length - 1)
-                if (lastChar != "/") {
+                if (lastChar != "/" && lastChar != "-" && lastChar != "*" && lastChar != "+" && lastChar != "%") {
                     appendText("/", false)
                 }
             }
@@ -130,7 +130,7 @@ class MainActivity : AppCompatActivity() {
             var value = expression.text
             if (value.isNotEmpty()) {
                 var lastChar = value.substring(value.length - 1)
-                if (lastChar != "*") {
+                if (lastChar != "*" && lastChar != "+" && lastChar != "-" && lastChar != "/" && lastChar != "%") {
                     appendText("*", false)
                 }
             }
@@ -151,7 +151,7 @@ class MainActivity : AppCompatActivity() {
             var value = expression.text
             if (value.isNotEmpty()) {
                 var lastChar = value.substring(value.length - 1)
-                if (lastChar != "+") {
+                if (lastChar != "+" && lastChar != "-" && lastChar != "*" && lastChar != "/" && lastChar != "%") {
                     appendText("+", false)
                 }
             }
