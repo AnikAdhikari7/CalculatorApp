@@ -112,7 +112,7 @@ class MainActivity : AppCompatActivity() {
             var value = expression.text
             if (value.isNotEmpty()) {
                 var lastChar = value.substring(value.length - 1)
-                if (lastChar != "%" && lastChar != "-" && lastChar != "*" && lastChar != "/" && lastChar != "+") {
+                if (lastChar != "%" && lastChar != "-" && lastChar != "*" && lastChar != "/" && lastChar != "+" && lastChar != ".") {
                     appendText("%", false)
                 }
             }
@@ -121,7 +121,7 @@ class MainActivity : AppCompatActivity() {
             var value = expression.text
             if (value.isNotEmpty()) {
                 var lastChar = value.substring(value.length - 1)
-                if (lastChar != "/" && lastChar != "-" && lastChar != "*" && lastChar != "+" && lastChar != "%") {
+                if (lastChar != "/" && lastChar != "-" && lastChar != "*" && lastChar != "+" && lastChar != "%" && lastChar != ".") {
                     appendText("/", false)
                 }
             }
@@ -130,7 +130,7 @@ class MainActivity : AppCompatActivity() {
             var value = expression.text
             if (value.isNotEmpty()) {
                 var lastChar = value.substring(value.length - 1)
-                if (lastChar != "*" && lastChar != "+" && lastChar != "-" && lastChar != "/" && lastChar != "%") {
+                if (lastChar != "*" && lastChar != "+" && lastChar != "-" && lastChar != "/" && lastChar != "%" && lastChar != ".") {
                     appendText("*", false)
                 }
             }
@@ -142,7 +142,7 @@ class MainActivity : AppCompatActivity() {
             }
             if (value.isNotEmpty()) {
                 var lastChar = value.substring(value.length - 1)
-                if (lastChar != "-") {
+                if (lastChar != "-"  && lastChar != ".") {
                     appendText("-", false)
                 }
             }
@@ -151,7 +151,7 @@ class MainActivity : AppCompatActivity() {
             var value = expression.text
             if (value.isNotEmpty()) {
                 var lastChar = value.substring(value.length - 1)
-                if (lastChar != "+" && lastChar != "-" && lastChar != "*" && lastChar != "/" && lastChar != "%") {
+                if (lastChar != "+" && lastChar != "-" && lastChar != "*" && lastChar != "/" && lastChar != "%" && lastChar != ".") {
                     appendText("+", false)
                 }
             }
@@ -173,11 +173,24 @@ class MainActivity : AppCompatActivity() {
 
         decimal.setOnClickListener {
             var value = expression.text
+            if (value.isEmpty()) {
+                appendText("0.", false)
+            }
             if (value.isNotEmpty()) {
                 var lastChar = value.substring(value.length - 1)
-                if (lastChar != ".") {
-                    appendText(".", true)
+                if (lastChar == ".") {
+
                 }
+                else if (lastChar == "+" || lastChar == "-" || lastChar == "*" || lastChar == "/" || lastChar == "%") {
+                    appendText("0.", false)
+                }
+                else {
+                    appendText(".", false)
+                }
+            }
+            if (value.isNotEmpty()) {
+                var lastChar = value.substring(value.length - 1)
+
             }
         }
         changeSign.setOnClickListener {
