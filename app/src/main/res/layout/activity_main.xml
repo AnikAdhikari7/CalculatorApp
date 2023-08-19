@@ -24,22 +24,26 @@
                 android:id="@+id/acTV"
                 style="@style/Number"
                 android:text="AC"
+                android:background="@drawable/button_bg"
                 android:textColor="@color/saffron" />
 
             <ImageView
                 android:id="@+id/backspaceIV"
                 style="@style/Number"
                 android:scaleType="center"
+                android:background="@drawable/button_bg"
                 android:src="@drawable/backspace_icon" />
 
             <TextView
                 android:id="@+id/moduloTV"
                 style="@style/Number"
+                android:background="@drawable/button_bg"
                 android:text="%" />
 
             <TextView
                 android:id="@+id/divideTV"
                 style="@style/Number"
+                android:background="@drawable/button_bg"
                 android:text="/" />
 
         </TableRow>
@@ -49,21 +53,25 @@
             <TextView
                 android:id="@+id/sevenTV"
                 style="@style/Number"
+                android:background="@drawable/button_bg"
                 android:text="7" />
 
             <TextView
                 android:id="@+id/eightTV"
                 style="@style/Number"
+                android:background="@drawable/button_bg"
                 android:text="8" />
 
             <TextView
                 android:id="@+id/nineTV"
                 style="@style/Number"
+                android:background="@drawable/button_bg"
                 android:text="9" />
 
             <TextView
                 android:id="@+id/multiplyTV"
                 style="@style/Number"
+                android:background="@drawable/button_bg"
                 android:text="*" />
 
         </TableRow>
@@ -73,21 +81,25 @@
             <TextView
                 android:id="@+id/fourTV"
                 style="@style/Number"
+                android:background="@drawable/button_bg"
                 android:text="4" />
 
             <TextView
                 android:id="@+id/fiveTV"
                 style="@style/Number"
+                android:background="@drawable/button_bg"
                 android:text="5" />
 
             <TextView
                 android:id="@+id/sixTV"
                 style="@style/Number"
+                android:background="@drawable/button_bg"
                 android:text="6" />
 
             <TextView
                 android:id="@+id/minusTV"
                 style="@style/Number"
+                android:background="@drawable/button_bg"
                 android:text="-" />
 
         </TableRow>
@@ -97,21 +109,25 @@
             <TextView
                 android:id="@+id/oneTV"
                 style="@style/Number"
+                android:background="@drawable/button_bg"
                 android:text="1" />
 
             <TextView
                 android:id="@+id/twoTV"
                 style="@style/Number"
+                android:background="@drawable/button_bg"
                 android:text="2" />
 
             <TextView
                 android:id="@+id/threeTV"
                 style="@style/Number"
+                android:background="@drawable/button_bg"
                 android:text="3" />
 
             <TextView
                 android:id="@+id/plusTV"
                 style="@style/Number"
+                android:background="@drawable/button_bg"
                 android:text="+" />
 
         </TableRow>
@@ -121,16 +137,19 @@
             <TextView
                 android:id="@+id/decimalTV"
                 style="@style/Number"
+                android:background="@drawable/button_bg"
                 android:text="." />
 
             <TextView
                 android:id="@+id/zeroTV"
                 style="@style/Number"
+                android:background="@drawable/button_bg"
                 android:text="0" />
 
             <TextView
                 android:id="@+id/changeSignTV"
                 style="@style/Number"
+                android:background="@drawable/button_bg"
                 android:text="+/-" />
 
             <TextView
