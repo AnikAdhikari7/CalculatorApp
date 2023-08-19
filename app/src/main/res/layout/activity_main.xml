@@ -23,15 +23,15 @@
             <TextView
                 android:id="@+id/acTV"
                 style="@style/Number"
-                android:text="AC"
                 android:background="@drawable/button_bg"
+                android:text="AC"
                 android:textColor="@color/saffron" />
 
             <ImageView
                 android:id="@+id/backspaceIV"
                 style="@style/Number"
-                android:scaleType="center"
                 android:background="@drawable/button_bg"
+                android:scaleType="center"
                 android:src="@drawable/backspace_icon" />
 
             <TextView
@@ -195,14 +195,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginBottom="309dp"
         android:gravity="center"
         android:text="@string/github_link"
+        android:textColor="#808080"
         android:textSize="10sp"
         android:textStyle="italic"
-        android:textColor="#808080"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/githubLink2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/githubLink2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="github.com/ShashiKPD"
+        android:textColor="#808080"
+        android:textSize="10sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/githubLink"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

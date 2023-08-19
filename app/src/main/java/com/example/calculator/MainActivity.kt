@@ -49,6 +49,11 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/AnikAdhikari7"))
             startActivity(intent)
         }
+        val github2: TextView = githubLink2
+        github2.setOnClickListener {
+            val intent2 = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/ShashiKPD"))
+            startActivity(intent2)
+        }
 
         zero = zeroTV
         one = oneTV
