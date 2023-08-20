@@ -4,12 +4,10 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.method.MovementMethod
 import android.widget.ImageView
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_main.*
 import net.objecthunter.exp4j.ExpressionBuilder
-import kotlin.math.exp
 
 class MainActivity : AppCompatActivity() {
 
@@ -40,13 +38,15 @@ class MainActivity : AppCompatActivity() {
     lateinit var expression: TextView
     lateinit var result: TextView
 
+    var operatorCount : Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val github: TextView = githubLink
         github.setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/AnikAdhikari7"))
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/AnikAdhikari7/CalculatorApp"))
             startActivity(intent)
         }
 
@@ -78,34 +78,44 @@ class MainActivity : AppCompatActivity() {
         result = resultTV
 
         zero.setOnClickListener {
-            appendText("0", true)
+            appendExpression("0", true)
+            calculateResult(false)
         }
         one.setOnClickListener {
-            appendText("1", true)
+            appendExpression("1", true)
+            calculateResult(false)
         }
         two.setOnClickListener {
-            appendText("2", true)
+            appendExpression("2", true)
+            calculateResult(false)
         }
         three.setOnClickListener {
-            appendText("3", true)
+            appendExpression("3", true)
+            calculateResult(false)
         }
         four.setOnClickListener {
-            appendText("4", true)
+            appendExpression("4", true)
+            calculateResult(false)
         }
         five.setOnClickListener {
-            appendText("5", true)
+            appendExpression("5", true)
+            calculateResult(false)
         }
         six.setOnClickListener {
-            appendText("6", true)
+            appendExpression("6", true)
+            calculateResult(false)
         }
         seven.setOnClickListener {
-            appendText("7", true)
+            appendExpression("7", true)
+            calculateResult(false)
         }
         eight.setOnClickListener {
-            appendText("8", true)
+            appendExpression("8", true)
+            calculateResult(false)
         }
         nine.setOnClickListener {
-            appendText("9", true)
+            appendExpression("9", true)
+            calculateResult(false)
         }
 
         modulo.setOnClickListener {
@@ -113,7 +123,7 @@ class MainActivity : AppCompatActivity() {
             if (value.isNotEmpty()) {
                 var lastChar = value.substring(value.length - 1)
                 if (lastChar != "%" && lastChar != "-" && lastChar != "*" && lastChar != "/" && lastChar != "+" && lastChar != ".") {
-                    appendText("%", false)
+                    appendExpression("%", false)
                 }
             }
         }
@@ -122,7 +132,7 @@ class MainActivity : AppCompatActivity() {
             if (value.isNotEmpty()) {
                 var lastChar = value.substring(value.length - 1)
                 if (lastChar != "/" && lastChar != "-" && lastChar != "*" && lastChar != "+" && lastChar != "%" && lastChar != ".") {
-                    appendText("/", false)
+                    appendExpression("/", false)
                 }
             }
         }
@@ -131,19 +141,18 @@ class MainActivity : AppCompatActivity() {
             if (value.isNotEmpty()) {
                 var lastChar = value.substring(value.length - 1)
                 if (lastChar != "*" && lastChar != "+" && lastChar != "-" && lastChar != "/" && lastChar != "%" && lastChar != ".") {
-                    appendText("*", false)
+                    appendExpression("*", false)
                 }
             }
         }
         minus.setOnClickListener {
             var value = expression.text
-            if (value.isEmpty()) {
-                appendText("-", false)
-            }
             if (value.isNotEmpty()) {
                 var lastChar = value.substring(value.length - 1)
-                if (lastChar != "-"  && lastChar != ".") {
-                    appendText("-", false)
+                if (lastChar != "-"  && lastChar != "." && lastChar != "+") {
+                    appendExpression("-", false)
+                }else{
+                    expression.text = value.substring(0, value.length - 1) + "-"
                 }
             }
         }
@@ -152,7 +161,9 @@ class MainActivity : AppCompatActivity() {
             if (value.isNotEmpty()) {
                 var lastChar = value.substring(value.length - 1)
                 if (lastChar != "+" && lastChar != "-" && lastChar != "*" && lastChar != "/" && lastChar != "%" && lastChar != ".") {
-                    appendText("+", false)
+                    appendExpression("+", false)
+                }else{
+                    expression.text = value.substring(0, value.length - 1) + "+"
                 }
             }
         }
@@ -161,20 +172,35 @@ class MainActivity : AppCompatActivity() {
             expression.text = ""
             result.text = ""
             result.hint = ""
+            operatorCount = 0
         }
         backspace.setOnClickListener {
             result.text = ""
             result.hint = ""
-            val value = expression.text
+            var value = expression.text
             if (value.isNotEmpty()) {
+                var deletedChar = value.substring(value.length - 1)
+                if(deletedChar >= "0" && deletedChar <= "9" && deletedChar != "."){}
+                else{
+                    operatorCount--
+                }
                 expression.text = value.substring(0, value.length - 1)
+
+                //recalculating result after deletion of last char
+                value = expression.text
+                if (value.isNotEmpty()) {
+                    deletedChar = value.substring(value.length - 1)
+                    if (deletedChar >= "0" && deletedChar <= "9") {
+                        calculateResult(false)
+                    }
+                }
             }
         }
 
         decimal.setOnClickListener {
             var value = expression.text
             if (value.isEmpty()) {
-                appendText("0.", false)
+                appendExpression("0.", false)
             }
             if (value.isNotEmpty()) {
                 var lastChar = value.substring(value.length - 1)
@@ -182,10 +208,10 @@ class MainActivity : AppCompatActivity() {
 
                 }
                 else if (lastChar == "+" || lastChar == "-" || lastChar == "*" || lastChar == "/" || lastChar == "%") {
-                    appendText("0.", false)
+                    appendExpression("0.", false)
                 }
                 else {
-                    appendText(".", false)
+                    appendExpression(".", false)
                 }
             }
             if (value.isNotEmpty()) {
@@ -205,31 +231,46 @@ class MainActivity : AppCompatActivity() {
         }
 
         equals.setOnClickListener {
+            calculateResult(true)
+        }
+    }
+
+    private fun appendExpression(value: String, toBeCleared: Boolean) {
+
+        if (toBeCleared) {
+            if (result.text != ""){
+                expression.text=""
+                result.text = ""
+            }
+            expression.append(value)
+        } else {
+            if (result.text != ""){
+                expression.text = result.text
+                result.text = ""
+            }
+            expression.append(value)
+            operatorCount++
+        }
+        if(operatorCount > 0 && toBeCleared) result.hint = expression.text
+        else result.hint = ""
+    }
+
+    private fun calculateResult(equalKeyPressed : Boolean){
+        if(operatorCount > 0){
             result.hint = ""
             try {
                 var expr = ExpressionBuilder(expression.text.toString()).build()
                 var ans = expr.evaluate()
-                result.text = ans.toString()
+                if(equalKeyPressed)
+                    result.text = ans.toString()
+                else
+                    result.hint = ans.toString()
             } catch (e: Exception) {
-                result.text = e.message
+                if(equalKeyPressed)
+                    result.text = e.message
+                else
+                    result.hint = e.message
             }
         }
-    }
-
-    private fun appendText(value: String, toBeCleared: Boolean) {
-        if (result.text != "") {
-            expression.text = ""
-        }
-
-        if (toBeCleared) {
-            result.text = ""
-            expression.append(value)
-        } else {
-            expression.append(result.text)
-            expression.append(value)
-            result.text = ""
-        }
-
-        result.hint = expression.text
     }
 }
